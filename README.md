@@ -8,7 +8,7 @@ BE uses Node.js.
 Keep related code together. Separate the code that deals with diff functionality.
 Our controllers will live alongside our routes, since controller defines how we are going to respond to our routes. Routers and controllers are one to one.
 
-Models will be in a separate folder. Models can be one to many, many to many, etc. In models our data doesn't necessarily match up with collections and functionality of our API, or how it is supposed to be accessed by our API. It's controllers' responsibility to provide our data in a way our app uses it.
+Models will be in a separate folder. Models can be one to many, many to many, etc. In models our data doesn't necessarily match up with collections and functionality of our API, or how it is supposed to be accessed by our API. Model only ever works with the data based on however it's stored. Controller only uses the data provided by our model and puts it in a response that's useful for our client.
 
 We'll start from server.js file, then separate express middleware to App.js file.
 
@@ -44,12 +44,15 @@ Then we'll add another express middleware:
 so now it's express serving our fe, not create-react-app. So the port will change from 3000, to our server's 8000.
 Then our app.get('*', (req, res) => {res.sendFile(path.join(__dirname, '..', 'public', 'index.html'))})
 
+We use `'*'` to handoff the routing from our backend express router to our fe react router. Index.html will be served and use HTML5 pushState API.
+
 Then we combine client's build script and server's start script under our app's deploy script.
 
 ### Log requests with Morgan middleware
 
+### Launches Model
 
-
+We'll use js [Map object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) for our data structure. It holds key-value pairs and remembers the original insertion order of the keys. ANY value (obj or primitives) can be used either as a key or a value.
 
 
 
