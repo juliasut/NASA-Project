@@ -54,6 +54,14 @@ Then we combine client's build script and server's start script under our app's 
 
 We'll use js [Map object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) for our data structure. It holds key-value pairs and remembers the original insertion order of the keys. ANY value (obj or primitives) can be used either as a key or a value.
 
+### Layered Architecture based on Separation of Concerns
+
+<img width="351" alt="Screen Shot 2023-01-09 at 8 23 38 PM" src="https://user-images.githubusercontent.com/81769855/211454893-57249917-8dc1-47e5-afda-d74c2843cdb5.png">
+
+### App Architecture
+
+<img width="769" alt="Screen Shot 2023-01-09 at 1 32 19 PM" src="https://user-images.githubusercontent.com/81769855/211930491-fcbc212f-fe60-4897-b4d1-2ba5f6d5f5b7.png">
+
 
 
 
