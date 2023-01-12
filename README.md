@@ -67,6 +67,23 @@ We'll use js [Map object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 <img width="769" alt="Screen Shot 2023-01-09 at 1 32 19 PM" src="https://user-images.githubusercontent.com/81769855/211930491-fcbc212f-fe60-4897-b4d1-2ba5f6d5f5b7.png">
 
+### Testing API
+
+# Jest
+
+- testrunner (FE and BE)
+- test fixtures (setup like __tests__ directory or in our case test files .spec.js or .test.js live close together to the ones tested.)
+- assertions
+  - describe
+  - test
+  - expect
+- mocking
+
+# Supertest
+
+High level of abstraction for HTTP tests, testing API.
+
+We require it as request const in our test file. It has app object as argument (our express app instance). Under the hood, adds listen function to it. Async test functions. Allows chaining http methods with expect().
 
 
 
