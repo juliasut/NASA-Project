@@ -1,7 +1,11 @@
 # NASA-Project
 
-FE uses create-react-app
-BE uses Node.js.
+We build a NASA project using pre-packaged front end react which sits as the client while the server uses NodeJS API and Express to manage the back end.
+
+React Client is made up of a public folder which contains index.html which references a 'root' file index.js which references an 'app' that manages all the front end App.js
+
+App.js contains sounds and router references which is rendered via DOM. The routers point to various pages (AppLayout, History, Launch & Upcoming) which all contain components that are utilized several times (Header, Footer etc..) and contained within those pages are also hooks which allow react to manage 'state' of Launches, Planets which is managed by a request file.
+
 
 ### MVC Pattern for our server
 
@@ -14,6 +18,7 @@ We'll start from server.js file, then separate express middleware to App.js file
 
 ### Node http module with Express middleware
 
+We want to seperate Express middle where from server so we use two files. Easier for testing purposes as well.
 We use express as a listener function for our Node http server. This allows us to use our server not only responding to http requests, but also to use web sockets.
 
 ### Routes for each of our collections
