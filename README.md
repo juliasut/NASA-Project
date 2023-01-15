@@ -5,6 +5,12 @@ We build a NASA project using pre-packaged front end react which sits as the cli
 React Client is made up of a public folder which contains index.html which references a 'root' file index.js which references an 'app' that manages all the front end App.js
 
 App.js contains sounds and router references which is rendered via DOM. The routers point to various pages (AppLayout, History, Launch & Upcoming) which all contain components that are utilized several times (Header, Footer etc..) and contained within those pages are also hooks which allow react to manage 'state' of Launches, Planets which is managed by a request file.
+</br>
+</br>
+
+<img width="1220" alt="Screen Shot 2023-01-15 at 12 46 14 PM" src="https://user-images.githubusercontent.com/81769855/212563602-01f878d4-58b2-4dbc-9b1e-ebb94a81bfa0.png">
+
+<img width="1220" alt="Screen Shot 2023-01-15 at 12 46 52 PM" src="https://user-images.githubusercontent.com/81769855/212563623-79e55e43-cf7c-4b0f-be17-bf9190f58e6b.png">
 
 
 ### MVC Pattern for our server
