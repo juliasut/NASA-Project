@@ -1,0 +1,21 @@
+const mongoose = require('mongoose');
+
+const MONGO_URL =
+  'mongodb+srv://NASA-API:WugYAjwuBTy5j00R@nasa-cluster.w0b09df.mongodb.net/nasa?retryWrites=true&w=majority';
+
+mongoose.connection.once('open', () => {
+  console.log('MongoDB connection ready!');
+});
+
+mongoose.connection.on('error', (err) => {
+  console.error(err);
+});
+
+async function mongoConnect() {
+  mongoose.set('strictQuery', false);
+  await mongoose.connect(MONGO_URL);
+}
+
+module.exports = {
+  mongoConnect,
+};
