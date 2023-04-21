@@ -40,6 +40,16 @@ const query = {
 };
 
 async function loadLaunchesData() {
+  const firstLaunch = await findLaunch({
+    flightNumber: 1,
+    rocket: 'Falcon 1',
+    mission: 'FalconSat',
+  })
+  if (firstLaunch) {
+    console.log('Launch data already loaded');
+    return;
+  }
+
   const response = await axios.post(SPACEX_API_URL, query, {
     headers: {
       'Accept-Encoding': 'text/html; charset=UTF-8',
@@ -63,6 +73,10 @@ async function loadLaunchesData() {
       customers,
     };
   }
+}
+
+async function findLaunch(filter) {
+  return await launches.findOne(filter);
 }
 
 async function existsLaunchWithId(launchId) {
