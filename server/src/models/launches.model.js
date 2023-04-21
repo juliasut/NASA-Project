@@ -21,6 +21,7 @@ const SPACEX_API_URL = 'https://api.spacexdata.com/v4/launches/query';
 const query = {
   query: {},
   options: {
+    pagination: false,
     populate: [
       {
         path: 'rocket',
@@ -39,7 +40,6 @@ const query = {
 };
 
 async function loadLaunchesData() {
-  console.log('loading launch data');
   const response = await axios.post(SPACEX_API_URL, query, {
     headers: {
       'Accept-Encoding': 'text/html; charset=UTF-8',
