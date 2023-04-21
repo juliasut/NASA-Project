@@ -91,6 +91,6 @@ High level of abstraction for HTTP tests, testing API.
 
 We require it as request const in our test file. It has app object as argument (our express app instance). Under the hood, adds listen function to it. Async test functions. Allows chaining http methods with expect().
 
-
+Documentation for [SpaceX-API](https://github.com/r-spacex/SpaceX-API/blob/master/docs/queries.md)
 
 
