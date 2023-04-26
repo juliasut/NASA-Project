@@ -52,6 +52,11 @@ async function loadLaunchesData() {
 
   const response = await axios.post(SPACEX_API_URL, query);
 
+  if (response.status !== 200) {
+    console.log('Problem downloading launch data');
+    throw new Error('Launch data download failed');
+  }
+
   const launchDocs = response.data.docs;
   for (const launchDoc of launchDocs) {
     const payloads = launchDoc['payloads'];
