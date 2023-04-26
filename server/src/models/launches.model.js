@@ -15,7 +15,7 @@ const launch = {
   success: true,
 };
 
-saveLaunch(launch);
+// saveLaunch(launch);
 
 const SPACEX_API_URL = 'https://api.spacexdata.com/v4/launches/query';
 const query = {
@@ -44,17 +44,13 @@ async function loadLaunchesData() {
     flightNumber: 1,
     rocket: 'Falcon 1',
     mission: 'FalconSat',
-  })
+  });
   if (firstLaunch) {
     console.log('Launch data already loaded');
     return;
   }
 
-  const response = await axios.post(SPACEX_API_URL, query, {
-    headers: {
-      'Accept-Encoding': 'text/html; charset=UTF-8',
-    },
-  });
+  const response = await axios.post(SPACEX_API_URL, query);
 
   const launchDocs = response.data.docs;
   for (const launchDoc of launchDocs) {
@@ -72,6 +68,8 @@ async function loadLaunchesData() {
       success: launchDoc['success'],
       customers,
     };
+
+    await saveLaunch(launch);
   }
 }
 
@@ -80,7 +78,7 @@ async function findLaunch(filter) {
 }
 
 async function existsLaunchWithId(launchId) {
-  return await launches.findOne({
+  return await findLaunch({
     flightNumber: launchId,
   });
 }
@@ -99,14 +97,6 @@ async function getAllLaunches() {
 }
 
 async function saveLaunch(launch) {
-  const planet = await planets.findOne({
-    keplerName: launch.target,
-  });
-
-  if (!planet) {
-    throw new Error('No matching planets found');
-  }
-
   await launches.findOneAndUpdate(
     { flightNumber: launch.flightNumber },
     launch,
@@ -117,6 +107,14 @@ async function saveLaunch(launch) {
 }
 
 async function scheduleNewLaunch(launch) {
+  const planet = await planets.findOne({
+    keplerName: launch.target,
+  });
+
+  if (!planet) {
+    throw new Error('No matching planets found');
+  }
+
   const newFlightNumber = (await getLatestFlightNumber()) + 1;
   const newLaunch = Object.assign(launch, {
     success: true,
