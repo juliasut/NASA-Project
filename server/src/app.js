@@ -1,10 +1,12 @@
 const path = require('path');
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
 const morgan = require('morgan');
 const api = require('./routes/api');
 
 const app = express();
+app.use(helmet());
 app.use(morgan('combined'));
 
 app.use(
